@@ -14,6 +14,13 @@ RUN pip install tracer
 
 
 #RM if loading to yandex
-EXPOSE 80
+EXPOSE 80 #get api
+
+
+EXPOSE 3001 #get BD
+
+EXPOSE 5051 #get server
+
+RUN pip install flask python-keycloak prometheus_flask_exporter
 
 CMD ["python", "main.py"]
