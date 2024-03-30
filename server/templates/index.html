@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Котики</title>
+
+    <style>
+        /* Стили для верхнего заголовка */
+        .header {
+            background-color: green; /* Задаем зеленый цвет фона */
+            color: white; /* Задаем белый цвет текста */
+            padding: 20px; /* Добавляем отступы вокруг текста */
+            text-align: center; /* Выравниваем текст по центру */
+        }
+        /* Дополнительные стили для верхнего заголовка */
+        .header p {
+            font-size: 18px; /* Размер текста */
+            font-weight: bold; /* Жирный шрифт */
+        }
+    </style>
+</head>
+<style>
+
+        .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #gen_btn {
+            font-size: 20px; /* Установка размера шрифта */
+            padding: 10px 20px; /* Установка отступов вокруг текста кнопки */
+            background-color: #4CAF50; /* Цвет фона кнопки */
+            color: white; /* Цвет текста кнопки */
+            border: none; /* Убираем границы кнопки */
+            border-radius: 8px; /* Закругляем углы кнопки */
+            cursor: pointer; /* Задаем стандартный курсор при наведении */
+        }
+
+        #add {
+            font-size: 20px; /* Установка размера шрифта */
+            padding: 10px 20px; /* Установка отступов вокруг текста кнопки */
+            background-color: #4CAF50; /* Цвет фона кнопки */
+            color: white; /* Цвет текста кнопки */
+            border: none; /* Убираем границы кнопки */
+            border-radius: 8px; /* Закругляем углы кнопки */
+            cursor: pointer; /* Задаем стандартный курсор при наведении */
+        }
+
+        /* Анимация нажатия */
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        /* Анимация активации */
+        button:active {
+            transform: translateY(20px);
+            background-color: #3e8e41; /* Изменение цвета при нажатии */
+        }
+
+         /* Стили для анимации нажатия */
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition-duration: 0.4s;
+            outline: none;
+
+            /* Стили для кнопки */
+        a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none; /* Убираем подчеркивание ссылки */
+            transition-duration: 0.4s;
+            outline: none;
+        }
+
+        /* Анимация наведения */
+        a.button:hover {
+            background-color: #45a049;
+        }
+
+        /* Анимация нажатия */
+        a.button:active {
+            background-color: #3e8e41;
+            transform: translateY(2px);
+        }
+        }
+    </style>
+<body>
+    <div class="header">
+        <p>Нажмите "Котики" чтобы получить картинку котиков</p>
+    </div>
+    <a href="/all" class="button">Избранное</a>
+
+    <div class="button-container">
+    <button id="gen_btn">Котики</button>
+        <button id="add">Сохранить в Избранное</button><br>
+    </div>
+
+    <div class="title">
+        <img id="img_film" class="poster" src="" alt="Котик" width="500" height="500">
+    </div>
+
+    <script src="{{ url_for('static', filename= 'script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сохраненные</title>
+
+    <style>
+        /* Стили для верхнего заголовка */
+        .header {
+            background-color: green; /* Задаем зеленый цвет фона */
+            color: white; /* Задаем белый цвет текста */
+            padding: 20px; /* Добавляем отступы вокруг текста */
+            text-align: center; /* Выравниваем текст по центру */
+        }
+        /* Дополнительные стили для верхнего заголовка */
+        .header p {
+            font-size: 18px; /* Размер текста */
+            font-weight: bold; /* Жирный шрифт */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <p>Сохраненные в БД</p>
+    </div>
+    <div id="film_container" class="film">
+    </div>
+
+
+    <!-- <script src="script.js"></script> -->
+    <script src="{{ url_for('static', filename= 'get_films.js') }}"></script>
+</body>
+</html>

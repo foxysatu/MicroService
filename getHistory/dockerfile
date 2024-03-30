@@ -1,0 +1,18 @@
+FROM python:3.11.7-slim-bullseye
+
+WORKDIR /app
+COPY . .
+
+RUN pip install fastapi
+RUN pip install uvicorn
+RUN pip install mysql-connector-python
+RUN pip install opentelemetry-api
+RUN pip install opentelemetry-sdk
+RUN pip install opentelemetry-exporter-jaeger
+RUN pip install tracer
+
+
+
+EXPOSE 3001
+
+CMD ["python", "main.py"]
