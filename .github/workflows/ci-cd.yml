@@ -23,7 +23,7 @@ jobs:
 #              pytest unit_test.py
 
     build-and-push:
-        needs: [test]
+#        needs: [test]
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
