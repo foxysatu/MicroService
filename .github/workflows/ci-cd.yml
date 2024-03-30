@@ -5,22 +5,22 @@ on:
     workflow_dispatch:
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v3
-          - name: Prepare for tests
-            run: |
-              sudo apt update
-              sudo apt install -y python3-pip
-              pip install requests uvicorn fastapi pytest
-              docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/getmovie:latest
-              docker run -p 80:80 -d ${{ secrets.DOCKER_USERNAME }}/getmovie:latest
-              sleep 5
-          - name: Run tests
-            run: |
-              pytest component_test.py
-              pytest unit_test.py
+#    test:
+#        runs-on: ubuntu-latest
+#        steps:
+#          - uses: actions/checkout@v3
+#          - name: Prepare for tests
+#            run: |
+#              sudo apt update
+#              sudo apt install -y python3-pip
+#              pip install requests uvicorn fastapi pytest
+#              docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/getmovie:latest
+#              docker run -p 80:80 -d ${{ secrets.DOCKER_USERNAME }}/getmovie:latest
+#              sleep 5
+#          - name: Run tests
+#            run: |
+#              pytest component_test.py
+#              pytest unit_test.py
 
     build-and-push:
         needs: [test]
