@@ -1,5 +1,5 @@
 from opentelemetry import trace
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from mysql.connector import connect, Error
@@ -36,9 +36,9 @@ def start_con():
                 password=os.getenv('MYSQL_PASSWORD', 'Qwerty123'),
             )
             print(connection)
-            create_db_query = "CREATE DATABASE IF NOT EXISTS films"
-            use_db_query = "USE films"
-            create_table_query = "CREATE TABLE IF NOT EXISTS films (id int)"
+            create_db_query = "CREATE DATABASE IF NOT EXISTS cot"
+            use_db_query = "USE cot"
+            create_table_query = "CREATE TABLE IF NOT EXISTS imgCot (urlP VARCHAR(255))"
             with connection.cursor() as cursor:
                 cursor.execute(create_db_query)
                 cursor.execute(use_db_query)
@@ -58,17 +58,21 @@ app.add_middleware(
 )
 
 @app.post('/')
-async def root(id: int):
+async def root(data = Body()):
+
+    url = str(data['url'])
     connection = start_con()
     if not connection:
         return
     try:
         with connection.cursor() as cursor:
-            cursor.execute(f"INSERT INTO films VALUES ({id})")
+            sql = "INSERT INTO imgCot(urlP) VALUES (%s)"
+            cursor.execute(sql, (url,))
+            # cursor.execute(f"""INSERT INTO imgCot (urlP) VALUES ({url})""")
         connection.commit()
     except Error as e:
         print(e)
-    return 1
+    return data
 
 @app.get('/')
 async def get_data():
@@ -77,7 +81,7 @@ async def get_data():
         return
     try:
         with connection.cursor() as cursor:
-            cursor.execute(f"SELECT id FROM films.films")
+            cursor.execute("SELECT urlP FROM imgCot")
             return [j for i in cursor.fetchall() for j in i]
     except Error as e:
         print(e)

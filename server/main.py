@@ -14,7 +14,7 @@ keycloak_openid = KeycloakOpenID(
     server_url=os.getenv("KEYCLOAK_URL", "http://keycloakapp:8080/"),
     client_id="ivan-client",
     realm_name="ivan",
-    client_secret_key="orXBepfBr6apOpl1WTufqVumU9dGvEnf",
+    client_secret_key="1mjX90YtqTfTYHrkyYsFfBmsYD0XYgzF",
 )
 
 metrics = PrometheusMetrics(app)

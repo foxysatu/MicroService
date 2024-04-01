@@ -19,8 +19,8 @@ jobs:
               sleep 5
           - name: Run tests
             run: |
-              pytest component_test.py
-              pytest unit_test.py
+              pytest getMovie/component_test.py
+              pytest getMovie/unit_test.py
 
     build-and-push:
         needs: [test]

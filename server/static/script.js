@@ -14,6 +14,8 @@ btn.onclick = async function() {
     }).then((data) => {
 
         img_film.src = data[0].url;
+        url= data[0].url;
+        localStorage.setItem('url', url);
     })
 }
 
@@ -21,9 +23,15 @@ btn.onclick = async function() {
 add = document.getElementById('add')
 
 add.onclick = async function(){
+    let t = localStorage.getItem('url')
+    let urlf = {url : t}
 
-    fetch("http://localhost:3001/?id=" + current.toString(), {
-    method: "POST"
+    fetch("http://localhost:3001", {
+    method: "POST",
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+    body: JSON.stringify(urlf)
     })
     .then((response) => response.json())
     .then((json) => console.log(json));
