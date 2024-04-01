@@ -13,7 +13,7 @@ jobs:
             run: |
               sudo apt update
               sudo apt install -y python3-pip
-              pip install requests uvicorn fastapi pytest pytest-asyncio httpx
+              pip install requests uvicorn fastapi pytest pytest-asyncio httpx opentelemetry
               docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/getmovie:latest
               docker run -p 80:80 -d ${{ secrets.DOCKER_USERNAME }}/getmovie:latest
               sleep 5
