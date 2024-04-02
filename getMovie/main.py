@@ -25,7 +25,6 @@ trace.get_tracer_provider().add_span_processor(BatchSpanProcessor(jaeger_exporte
 
 tracer = trace.get_tracer("choice")
 
-
 app = FastAPI()
 
 app.add_middleware(
@@ -36,12 +35,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 async def root():
     with tracer.start_as_current_span("getMovie"):
         # r_id = random.randint(1, 1000)
         r = requests.get("https://api.thecatapi.com/v1/images/search?limit=1")
         return r.json()
+
 
 @app.get("/list/")
 async def get_list(q: list | None = Query()):
@@ -51,6 +52,7 @@ async def get_list(q: list | None = Query()):
             r = requests.get("https://api.thecatapi.com/v1/images/search?limit=1")
             film_list.append(r.json())
         return film_list
+
 
 if __name__ == '__main__':
     uvicorn.run(app, host="0.0.0.0", port=int(os.getenv('PORT', 80)))
