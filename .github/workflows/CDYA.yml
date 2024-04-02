@@ -6,7 +6,7 @@ jobs:
     build-and-push-to-yc:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
             - name: Build docker image
               run: docker build . --file Dockerfile --tag cr.yandex/${{secrets.YC_REGISTRY_ID }}/getmovie:latest
             - name: Login to YC Registry
