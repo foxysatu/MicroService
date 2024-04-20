@@ -6,6 +6,5 @@ COPY . .
 EXPOSE 5051
 
 RUN pip install flask python-keycloak prometheus_flask_exporter
-
-
+RUN pip install Authlib
 CMD ["python", "main.py"]

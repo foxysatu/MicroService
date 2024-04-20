@@ -10,7 +10,7 @@ RUN pip install opentelemetry-sdk
 RUN pip install opentelemetry-api
 RUN pip install opentelemetry-exporter-jaeger
 RUN pip install tracer
-
+RUN pip install python-jose
 
 
 #RM if loading to yandex
